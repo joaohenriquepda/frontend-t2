@@ -2,8 +2,11 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { url } from "inspector";
+
 export const environment = {
-  production: false
+  production: false,
+  url: 'https://api-t2.herokuapp.com'
 };
 
 /*

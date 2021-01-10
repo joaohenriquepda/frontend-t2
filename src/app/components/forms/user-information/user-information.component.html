@@ -1,0 +1,18 @@
+<form [formGroup]="userForm" (ngModelChange)="sendMessage()">
+    <label>Nome</label>
+    <input type="text" formControlName="name" maxlength="40" name="name" class="form-control"
+        placeholder="Nome completo">
+    <div *ngIf="userForm.get('name').getError('maxlength')">
+        <span class="form-text inform text-danger">
+            Valor máximo de caracteres ultrapassado, o máximo são 40
+        </span>
+    </div>
+    <label>CPF</label>
+    <input type="text" formControlName="cpf" mask="000.000.000-00" name="cpf" class="form-control" placeholder="CPF">
+    <label>Email</label>
+    <input type="text" formControlName="email" type="email" email="true" name="email" class="form-control"
+        placeholder="Email">
+    <label>Telefone</label>
+    <input type="text" formControlName="phone" name="phone" mask="(00) 00000-0000" class="form-control"
+        placeholder="Telefone">
+</form>

@@ -30,7 +30,4 @@ RUN npm install -g firebase-tools
 
 EXPOSE 3333
 
-# COPY docker-entrypoint.sh /usr/local/bin/
-# ENTRYPOINT ["docker-entrypoint.sh"]
-
 CMD [ "node" ]
