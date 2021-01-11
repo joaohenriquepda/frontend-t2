@@ -1,0 +1,27 @@
+<div class="container">
+
+    <div class="col-sm-10 ">
+        <div class="box">
+            <div class="">
+                <h1 class="mb-2 titles">Acessando o sistema</h1>
+
+                <form [formGroup]="loginForm">
+                    <label>CPF</label>
+                    <input type="text" formControlName="cpf" mask="000.000.000-00" name="cpf" class="form-control"
+                        placeholder="CPF">
+                    <label>Password</label>
+                    <input type="text" formControlName="password" type="password" name="password" class="form-control"
+                        placeholder="Password">
+                </form>
+
+                <br />
+
+                <button type="button" class="mb-3 btn btn-success btn-lg btn-block" (click)="login()">
+                    Acessar
+                </button>
+
+                <button class="mb-3 btn btn-primary btn-lg btn-block" [routerLink]="['/register']">Criar um novo registro</button>
+
+            </div>
+        </div>
+    </div>

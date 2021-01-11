@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class LoginGuard implements CanActivate {
 
 
-  userAuth = JSON.parse(localStorage.getItem('isacAuth'));
+  userAuth = JSON.parse(localStorage.getItem('t2Token'));
 
   constructor(private router: Router) { }
 

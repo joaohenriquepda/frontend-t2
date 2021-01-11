@@ -25,8 +25,6 @@ export class UserInformationComponent implements OnInit {
     this.userForm.valueChanges.subscribe(val => {
       this.sendMessage();
     });
-
-
   }
 
   createForm() {

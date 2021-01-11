@@ -18,4 +18,14 @@ export class ApiService {
     return this.http.post(environment.url + '/users', user, httpOptions);
   }
 
+
+  login(info: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(environment.url + '/sessions', info, httpOptions);
+  }
+
 }

@@ -14,14 +14,20 @@ import { PasswordComponent } from './components/forms/password/password.componen
 import { ApiService } from './services/api.service'
 import { HttpClientModule } from '@angular/common/http';
 
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UsersComponent } from './components/users/users.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     UserInformationComponent,
-    PasswordComponent
+    PasswordComponent,
+    LoginComponent,
+    ProfileComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
