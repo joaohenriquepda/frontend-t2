@@ -4,13 +4,14 @@ import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component'
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full',
-    canActivate: [LoginGuard]
+    canActivate: []
   },
   {
     path: '',
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent, canActivate: []
+    component: RegisterComponent, canActivate: [LoginGuard]
   },
   {
     path: 'login',
@@ -27,7 +28,11 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent,  canActivate: [LoginGuard]
+    component: ProfileComponent, canActivate: [LoginGuard]
+  },
+  {
+    path: 'home',
+    component: HomeComponent, canActivate: [LoginGuard]
   },
 ];
 

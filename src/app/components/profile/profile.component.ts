@@ -11,7 +11,6 @@ export class ProfileComponent implements OnInit {
   user; userData: any;
   updateEnabled: boolean = true;
 
-
   get getAuth() {
     return JSON.parse(localStorage.getItem('t2Token'));
   }
@@ -34,6 +33,7 @@ export class ProfileComponent implements OnInit {
     this.api.getProfile(this.getAuth.token, this.getAuth.id).subscribe(
       data => {
         this.userData = data;
+        this.userData.token = this.getAuth.token
         console.log(this.user);
       },
       error => {

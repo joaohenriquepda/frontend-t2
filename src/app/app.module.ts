@@ -17,7 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { UsersComponent } from './components/users/users.component'
+import { UsersComponent } from './components/users/users.component';
+import { HomeComponent } from './components/home/home.component';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { UsersComponent } from './components/users/users.component'
     PasswordComponent,
     LoginComponent,
     ProfileComponent,
-    UsersComponent
+    UsersComponent,
+    HomeComponent,
+    SidemenuComponent
   ],
   imports: [
     BrowserModule,

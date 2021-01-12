@@ -1,32 +1,43 @@
 <div class="container">
+    <h1 class="mb-2 titles">Informações registradas</h1>
+    <div class="row">
+        <div class="col-sm-8 ">
+            <app-user-information [user]="userData" (userDataForm)="receiveUserPayload($event)">
+            </app-user-information>
+            <br />
 
-    <div class="col-sm-10 ">
-        <div class="box">
-            <div class="">
-                <h1 class="mb-2 titles">Novo registro</h1>
+            <button type="button" [disabled]="updateEnabled" class="mb-3 btn btn-success btn-lg btn-block"
+                (click)="updateProfile()">
+                Atualizar Informações
+            </button>
 
-                <app-user-information [user]="userData" (userDataForm)="receiveUserPayload($event)">
-                </app-user-information>
-                <!-- <app-password (passwordDataForm)="receivePasswordPayload($event)"></app-password> -->
+            <div class="card">
+                <h5 class="card-header">{{userData.name}}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">CPF</h5>
+                    <p class="card-text">{{userData.cpf}}</p>
 
-                <br />
+                    <h5 class="card-title">Email</h5>
+                    <p class="card-text">{{userData.email}}</p>
 
-                <button class="mb-3 btn btn-primary btn-lg btn-block" [routerLink]="['/home']">Ver todos usuários</button>
-                <button type="button" [disabled]="updateEnabled" class="mb-3 btn btn-success btn-lg btn-block"
-                    (click)="updateProfile()">
-                    Atualizar Informações
-                </button>
+                    <h5 class="card-title">Telefone</h5>
+                    <p class="card-text">{{userData.phone}}</p>
+
+                    <h5 class="card-title">Identificador</h5>
+                    <p class="card-text">{{userData._id}}</p>
+
+                    <h5 class="card-title">identificador</h5>
+                    <p class="card-text">{{userData.token}}</p>
 
 
-                <!-- <button type="button" [disabled]="registerEnabled" class="mb-3 btn btn-success btn-lg btn-block"
-                    (click)="register()">
-                    Registrar
-                </button>
-
-                <button type="button" class="mb-3 btn btn-primary btn-lg btn-block" [routerLink]="['/']">
-                    Voltar
-                </button> -->
-
+                    
+                </div>
             </div>
+
+        </div>
+
+        <div class="col-sm-2 ">
+            <app-sidemenu></app-sidemenu>
         </div>
     </div>
+</div>

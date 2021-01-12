@@ -48,6 +48,25 @@ export class ApiService {
     return this.http.put(environment.url + '/users/' + id, data, httpHeaders);
   }
 
+  getUsers(token) {
+    const httpHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'bearer ' + token
+      })
+    };
+    return this.http.get(environment.url + '/users', httpHeaders);
+  }
 
+
+  deleteProfile(token, id) {
+    const httpHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'bearer ' + token
+      })
+    };
+    return this.http.delete(environment.url + '/users/' + id, httpHeaders);
+  }
 
 }
