@@ -5,14 +5,18 @@
             <div class="">
                 <h1 class="mb-2 titles">Novo registro</h1>
 
-                <app-user-information (userDataForm)="receiveUserPayload($event)"></app-user-information>
+                <app-user-information [user]="" (userDataForm)="receiveUserPayload($event)"></app-user-information>
                 <app-password (passwordDataForm)="receivePasswordPayload($event)"></app-password>
 
                 <br />
 
-                <button type="button" [disabled]="registerEnabled" class="mb-3 btn btn-primary btn-lg btn-block"
+                <button type="button" [disabled]="registerEnabled" class="mb-3 btn btn-success btn-lg btn-block"
                     (click)="register()">
                     Registrar
+                </button>
+
+                <button type="button" class="mb-3 btn btn-primary btn-lg btn-block" [routerLink]="['/']">
+                    Voltar
                 </button>
 
             </div>

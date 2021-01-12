@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 export class UserInformationComponent implements OnInit {
 
   @Output() userDataForm = new EventEmitter<any>();
+  @Input() user: any;
 
   userForm: FormGroup;
   isValidForm: boolean;

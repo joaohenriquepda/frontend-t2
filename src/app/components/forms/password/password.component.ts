@@ -23,7 +23,6 @@ export class PasswordComponent implements OnInit {
     this.passwordForm.valueChanges.subscribe(val => {
       this.sendPasswordForm();
     });
-
   }
 
   createForm() {

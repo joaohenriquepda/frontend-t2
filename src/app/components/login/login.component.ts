@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.api.login(this.loginForm.value).subscribe(
       async data => {
         console.log(data);
-        await this.setInLocalStorage(data['token'])
+        await this.setInLocalStorage(data)
         this.router.navigate(['/profile']);
       },
       error => {

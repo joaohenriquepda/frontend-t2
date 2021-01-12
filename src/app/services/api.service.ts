@@ -28,4 +28,26 @@ export class ApiService {
     return this.http.post(environment.url + '/sessions', info, httpOptions);
   }
 
+  getProfile(token, id) {
+    const httpHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'bearer ' + token
+      })
+    };
+    return this.http.get(environment.url + '/users/' + id, httpHeaders);
+  }
+
+  updateProfile(token, id, data) {
+    const httpHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'bearer ' + token
+      })
+    };
+    return this.http.put(environment.url + '/users/' + id, data, httpHeaders);
+  }
+
+
+
 }
