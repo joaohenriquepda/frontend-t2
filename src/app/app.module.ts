@@ -41,7 +41,8 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgbModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

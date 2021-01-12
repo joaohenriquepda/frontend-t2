@@ -23,7 +23,8 @@
                             <td></td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                    <button type="button" class="btn btn-outline-secondary">Editar</button>
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        (click)="openUser(user, user._id)">Editar</button>
                                     <button type="button" class="btn btn-outline-secondary"
                                         (click)="deleteUser(user._id)">Deletar</button>
                                 </div>
@@ -40,3 +41,27 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #user let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Informações do Parceiro</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times; </span>
+      </button>
+    </div>
+    <div class="modal-body">
+ 
+        <app-user-information  [user]="userUpdate" (userDataForm)="receiveUserUpdatePayload($event)"></app-user-information>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger btn-block" (click)="modal.close('Save click')">
+        Cancelar
+      </button>
+      <button type="button" class="btn btn-primary btn-block" (click)="updateUser()">
+        Atualizar
+      </button>
+      <!-- <button type="button" class="btn btn-primary btn-lg" (click)="removeStatus()"> Remover </button> -->
+    </div>
+  </ng-template>
