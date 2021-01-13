@@ -1,27 +1,62 @@
-# FrontendT2
+# T2 - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+## Ambiente de desenvolvimento 
 
-## Development server
+O ambiente de desenvolvimento consta com suas dependências em containers do Docker. Caso precise instalar o docker na raíz do projeto já tem dois scripts de instalação do Docker e Docker compose para ambientes Linux.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Para utilizar o docker para executar o projeto basta executar o comando abaixo na raíz do projeto
+```
+$ docker-compose up
+```
+O Docker irá realizar o download de todas as dependências necessárias e ao final do processo o projeto estará disponível para acesso em **https://localhost:4201**
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Comandos úteis
 
-## Build
+### server local
+Caso não queria usar o Docker para gerenciar as dependências do projeto e já tenha sua máquina configurada com Node e o Angular CLI, poderá usar o comando a seguir para colocar o sistema em funcionamento
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+$ ng server
+```
 
-## Running unit tests
+Se tudo ocorrer conforme o esperado poderá acessar o projeto em *https://localhost:4200**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Processo de deploy e CI/CD
 
-## Running end-to-end tests
+ Atualmente o projeto não conta com integração contínua e deploy contínuo integrado, o processo ainda é manual. Segue abaixo as instruçõe para realizar o deploy no  servidor **Firebase**
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+ Primeiro precisamos gerar a build dos arquivos, o comando a seguir irá gerar os arquivos e configurar as váriáveis necessárias em modo de produção.
 
-## Further help
+ ```
+$ ng build --prod
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Com os arquivos da build gerados agora será possível realizar o deploy. Primeiro irá precisar logar no firebase, estou levando em consideração que está utilizando o container docker, caso contrário irá precisar instalar a dependência do firebase.
+
+ ```
+$ firebase login
+```
+Será solicitado no terminal que acesse um link para dar permissão da conta, acesse o link. Para finalmente poder executar o deploy
+
+ ```
+$ firebase deploy
+```
+
+
+### Pontos de destaque sobre regra de negócios
+Algumas das soluções apresentadas aqui foram desenvolvidas pensando na continuidade do desenvolvimento.
+
+- O sistema armazena localmente o token (padrão JWT) de acesso que expira em um determinado período de tempo.
+- A API para algumas consultas é necessário passar o token de acesso;
+
+
+
+
+## Links de acesso
+O projeto está hospedado no firebase e pode ser acessado em
+
+https://t2solution.web.app/login
+
+A API do projeto está
+https://api-t2.herokuapp.com/

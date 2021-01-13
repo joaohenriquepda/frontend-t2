@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
 
         setTimeout(async () => {
           await this.setInLocalStorage(data)
+          this.spinner.hide();
           this.router.navigate(['/profile']);
         }, 3000);
 

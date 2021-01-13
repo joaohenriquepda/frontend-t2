@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
       data => {
         this.userData = data;
         this.userData.token = this.getAuth.token
-        console.log(this.user);
       },
       error => {
         console.log(error);
