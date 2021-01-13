@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +20,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UsersComponent } from './components/users/users.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
-
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +41,11 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
+    NgxSpinnerModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     NgbModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { NgbModal, NgbModalOptions, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,10 @@ import { NgbModal, NgbModalOptions, ModalDismissReasons } from '@ng-bootstrap/ng
 export class HomeComponent implements OnInit {
 
   @ViewChild('user', { static: false }) modalUser: ElementRef;
+  @ViewChild('alert', { static: false }) modalAlert: ElementRef;
   users; userUpdate; userUpdateId: any;
   closeResult: string;
+  message: string;
 
   get getAuth() {
     return JSON.parse(localStorage.getItem('t2Token'));
@@ -20,6 +23,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private api: ApiService,
     private modalService: NgbModal,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -42,10 +46,21 @@ export class HomeComponent implements OnInit {
   deleteUser(id: any) {
     this.api.deleteProfile(this.getAuth.token, id).subscribe(
       data => {
-        console.log(data);
-        this.getUsers();
+        this.spinner.show()
+        setTimeout(() => {
+          this.spinner.hide()
+          this.openAlert("Remoção realizada com sucesso")
+          setTimeout(() => {
+            this.modalService.dismissAll()
+            this.getUsers();
+          }, 1000);
+        }, 2000);
       }, error => {
-        console.log(error);
+        this.spinner.show()
+        setTimeout(() => {
+          this.spinner.hide()
+          this.openAlert("Ocorreu um problema")
+        }, 2000);
 
       })
   }
@@ -55,7 +70,7 @@ export class HomeComponent implements OnInit {
     this.userUpdate = user;
 
     console.log(this.userUpdateId);
-    
+
     //  this.createUpdateForm()
 
     const part = this.modalService.open(this.modalUser, {
@@ -75,18 +90,41 @@ export class HomeComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.userUpdate);
 
     this.api.updateProfile(this.getAuth.token, this.userUpdateId, this.userUpdate).subscribe(
       data => {
-        this.getUsers();
-        this.modalService.dismissAll();
+
+        this.spinner.show()
+        setTimeout(() => {
+          this.spinner.hide()
+          this.openAlert("Atualização realizada com sucesso")
+          setTimeout(() => {
+            this.modalService.dismissAll()
+            this.getUsers();
+          }, 1000);
+        }, 2000);
       },
       error => {
-        console.log(error);
-
+        this.spinner.show()
+        setTimeout(() => {
+          this.spinner.hide()
+          this.openAlert("Ocorreu um problema")
+        }, 2000);
       }
     )
+  }
+
+  openAlert(message: any) {
+    this.message = message
+    const part = this.modalService.open(this.modalAlert, {
+      size: 'small',
+      scrollable: true,
+    }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+
+    }, (reason) => {
+      // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
 }

@@ -9,13 +9,16 @@ export class LoginGuard implements CanActivate {
 
 
   userAuth = JSON.parse(localStorage.getItem('t2Token'));
+  get getAuth() {
+    return JSON.parse(localStorage.getItem('t2Token'));
+  }
 
   constructor(private router: Router) { }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
 
-    if (this.userAuth !== null) {
+    if (this.getAuth !== null) {
       return true;
     } else {
       this.router.navigate(['/login']);

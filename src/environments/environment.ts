@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  // url: 'https://api-t2.herokuapp.com'
-  url: 'http://localhost:3333'
+  url: 'https://api-t2.herokuapp.com'
+  // url: 'http://localhost:3333'
 };
 
 /*

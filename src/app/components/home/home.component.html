@@ -45,7 +45,7 @@
 
 <ng-template #user let-modal>
     <div class="modal-header">
-      <h4 class="modal-title">Informações do Parceiro</h4>
+      <h4 class="modal-title">Informações do Usuário</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times; </span>
       </button>
@@ -65,3 +65,23 @@
       <!-- <button type="button" class="btn btn-primary btn-lg" (click)="removeStatus()"> Remover </button> -->
     </div>
   </ng-template>
+
+  <ng-template #alert let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{message}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times; </span>
+        </button>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-block" (click)="modal.close('Save click')">
+            Fechar
+        </button>
+    </div>
+</ng-template>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Carregando</p>
+</ngx-spinner>
